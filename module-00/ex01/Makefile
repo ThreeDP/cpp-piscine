@@ -1,8 +1,8 @@
 NAME			= phonebook
-HEADER			= phone_book.hpp contact.hpp defines.hpp
+HEADER			= PhoneBook.hpp Contact.hpp defines.hpp
 FLAGS			= -Wall -Wextra -Werror -std=c++98
 OBJ_PATH		= ./objs/
-SRC				= phone_book.cpp contact.cpp main.cpp
+SRC				= PhoneBook.cpp Contact.cpp main.cpp
 OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
 all: mkdir_path_objs $(HEADER) $(NAME)
