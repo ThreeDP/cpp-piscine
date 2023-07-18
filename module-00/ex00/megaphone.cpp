@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 16:18:45 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/15 20:01:22 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:48:15 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ std::string ftToUpper(const std::string s) {
 int main(int ac, char **av) {
 	if (ac > 1) {
 		for (int i = 1; i < ac; i++) {
-			std::cout << std::uppercase << av[i];
+			(i != ac - 1) ? std::cout << ftToUpper(av[i]) << " " :
+							std::cout << ftToUpper(av[i]);
 		}
 		std::cout << std::endl;
 		return 0;
