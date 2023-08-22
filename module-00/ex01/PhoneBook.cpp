@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.cpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 16:18:35 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/16 18:55:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:28:54 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phone_book.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {
 	this->size = 0;

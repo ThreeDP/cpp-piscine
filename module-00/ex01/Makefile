@@ -5,15 +5,15 @@ OBJ_PATH		= ./objs/
 SRC				= PhoneBook.cpp Contact.cpp main.cpp
 OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
-all: mkdir_path_objs $(HEADER) $(NAME)
+all: $(NAME)
 
 mkdir_path_objs:
 	mkdir -p $(OBJ_PATH)
 
-$(OBJ_PATH)%.o: %.cpp
+$(OBJ_PATH)%.o: %.cpp $(HEADER)
 	c++ $(FLAGS) -I ./ -c $< -o $@
 
-$(NAME): $(OBJ)
+$(NAME): mkdir_path_objs $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.hpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 16:18:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/16 18:00:39 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:41:50 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __PHONE_BOOK_HPP__
 # define __PHONE_BOOK_HPP__
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
 class PhoneBook {
 	int			size;
