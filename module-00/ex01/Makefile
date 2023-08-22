@@ -17,7 +17,7 @@ $(NAME): mkdir_path_objs $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
 	rm -rf $(NAME)
