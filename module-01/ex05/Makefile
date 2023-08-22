@@ -6,7 +6,7 @@
 #    By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:28:02 by dapaulin          #+#    #+#              #
-#    Updated: 2023/07/19 18:16:10 by dapaulin         ###   ########.fr        #
+#    Updated: 2023/08/22 14:59:00 by dapaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,19 @@ OBJ_PATH		= ./objs/
 SRC				= main.cpp Harl.cpp
 OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
-all: mkdir_path_objs $(HEADER) $(NAME)
+all: mkdir_path_objs $(NAME)
 
 mkdir_path_objs:
 	mkdir -p $(OBJ_PATH)
 
-$(OBJ_PATH)%.o: %.cpp
+$(OBJ_PATH)%.o: %.cpp $(HEADER)
 	c++ $(FLAGS) -I ./ -c $< -o $@
 
 $(NAME): $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
 	rm -rf $(NAME)
