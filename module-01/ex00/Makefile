@@ -6,7 +6,7 @@
 #    By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 13:11:02 by dapaulin          #+#    #+#              #
-#    Updated: 2023/08/22 14:57:38 by dapaulin         ###   ########.fr        #
+#    Updated: 2023/08/23 14:33:46 by dapaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 all: mkdir_path_objs $(NAME)
 
 mkdir_path_objs:
-	mkdir -p $(OBJ_PATH) $(HEADER)
+	mkdir -p $(OBJ_PATH)
 
-$(OBJ_PATH)%.o: %.cpp
+$(OBJ_PATH)%.o: %.cpp $(HEADER)
 	c++ $(FLAGS) -I ./ -c $< -o $@
 
 $(NAME): $(OBJ)

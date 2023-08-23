@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:16:07 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 19:13:05 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:26:23 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <fstream>
+# include <cstdlib> 
 # ifndef __BUFFER_SIZE__
 # define __BUFFER_SIZE__ 100
 # endif
@@ -26,9 +27,9 @@ class Replace {
 	std::string	replaceString;
 	std::string	inString;
 	std::string outString;
-	void		getTextInFile(void);
+	int			getTextInFile(void);
 	void		alterTextInFile(void);
-	void		setTextInFile(void);
+	int			setTextInFile(void);
 
 	public:
 		Replace(std::string f, std::string s1, std::string s2);

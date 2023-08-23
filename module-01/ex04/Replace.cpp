@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:51:45 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 20:40:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:28:40 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,21 @@ Replace::~Replace(void) {
 	return ;
 }
 
-void	Replace::getTextInFile(void) {
+int	Replace::getTextInFile(void) {
 	std::ifstream			ifs;
 	const std::streamsize	bufferSize = __BUFFER_SIZE__;
 	char					buffer[__BUFFER_SIZE__];
 
 	ifs.open(this->fileName.c_str(), std::ifstream::in);
+	if (!ifs)
+	{
+		std::cerr << "Look the file: " << this->fileName << "! They look me wrong..." << std::endl;
+		std::exit(1);
+	}
 	while (ifs.get(buffer, bufferSize, '\0'))
 		this->inString += buffer;
 	ifs.close();
+	return (0);
 }
 
 void	Replace::alterTextInFile(void) {
@@ -49,13 +55,19 @@ void	Replace::alterTextInFile(void) {
 		this->outString += this->inString;
 }
 
-void	Replace::setTextInFile(void) {
+int	Replace::setTextInFile(void) {
 	std::string		outFile = this->fileName + ".replace";
 	std::ofstream			ofs;
 	
 	ofs.open(outFile.c_str(), std::ifstream::out);
+	if (!ofs)
+	{
+		std::cerr << "Look the file: " << this->fileName << ".replace! They look me wrong..." << std::endl;
+		std::exit(1);
+	}
 	ofs << this->outString;
 	ofs.close();
+	return (0);
 }
 
 std::string	Replace::replace(void) {
