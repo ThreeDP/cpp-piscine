@@ -7,10 +7,8 @@ OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
 all: $(NAME)
 
-mkdir_path_objs:
-	mkdir -p $(OBJ_PATH)
-
 $(OBJ_PATH)%.o: %.cpp $(HEADER)
+	mkdir -p $(OBJ_PATH)
 	c++ $(FLAGS) -I ./ -c $< -o $@
 
 $(NAME): mkdir_path_objs $(OBJ)

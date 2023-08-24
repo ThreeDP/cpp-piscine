@@ -6,7 +6,7 @@
 #    By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 14:05:20 by dapaulin          #+#    #+#              #
-#    Updated: 2023/08/22 14:57:54 by dapaulin         ###   ########.fr        #
+#    Updated: 2023/08/23 17:08:50 by dapaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,10 @@ OBJ_PATH		= ./objs/
 SRC				= Zombie.cpp main.cpp zombieHorde.cpp
 OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
-all: mkdir_path_objs  $(NAME)
-
-mkdir_path_objs:
-	mkdir -p $(OBJ_PATH)
+all: $(NAME)
 
 $(OBJ_PATH)%.o: %.cpp $(HEADER)
+	mkdir -p $(OBJ_PATH)
 	c++ $(FLAGS) -I ./ -c $< -o $@
 
 $(NAME): $(OBJ)
