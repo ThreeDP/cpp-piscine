@@ -6,16 +6,17 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:45:51 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/24 20:38:43 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/24 20:37:19 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
-	ScavTrap	bob = ScavTrap("Bob");
-	ScavTrap	mario(bob);
-	ScavTrap	july = ScavTrap("July");
+	FragTrap	bob = FragTrap("Bob");
+	FragTrap	mario(bob);
+	FragTrap	july = FragTrap("July");
 	std::cout << std::endl;
 
 	bob.getStatus();
@@ -24,7 +25,8 @@ int main() {
 	bob.beRepaired(10);
 	bob.getStatus();
 	std::cout << std::endl;
-	bob.guardGate();
+	bob.highFivesGuys();
+
 
 	mario.getStatus();
 	mario.attack("Gaspar");
@@ -32,10 +34,11 @@ int main() {
 	mario.beRepaired(10);
 	mario.getStatus();
 	std::cout << std::endl;
-	mario.guardGate();
+	mario.highFivesGuys();
+
 
 	july.getStatus();
-	for (int i = 0; i < 26; i++)
+	for (int i = 0; i < 52; i++)
 	{
 		july.attack("Rock");
 		july.beRepaired(10);
@@ -43,5 +46,5 @@ int main() {
 	}
 	july.getStatus();
 	std::cout << std::endl;
-	july.guardGate();
+	july.highFivesGuys();
 }
