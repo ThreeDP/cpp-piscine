@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:18:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/09/05 19:55:26 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:47:06 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __ANIMAL_HPP__
 
 # include <iostream>
+# include "define.hpp"
 
 class Animal {
 	protected:
@@ -22,10 +23,11 @@ class Animal {
 		Animal(void);
 		virtual ~Animal(void);
 		Animal(Animal const &animal);
-		Animal				&operator=(Animal const &rhs);
+		virtual Animal& operator=(const Animal &rhs);
 
 		std::string			getType(void) const;
 		virtual void		makeSound(void) const;
+		virtual void		showBrain(void) const;
 };
 
 #endif
