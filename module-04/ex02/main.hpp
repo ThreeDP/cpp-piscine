@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:40:21 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/09/09 16:25:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:29:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "define.hpp"
 
 #endif 
