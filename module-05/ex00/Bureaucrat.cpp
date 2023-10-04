@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:46:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/03 23:38:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/03 23:47:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ Bureaucrat::Bureaucrat(std::string n, int g) : _name(n) {
 Bureaucrat::~Bureaucrat(void) {
 	std::cout << REDHB "Destruct Bureaucrat " << Bureaucrat::_name;
 	std::cout << " Grade with " << Bureaucrat::_grade << reset << std::endl;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const &b) {
+	*this = b;
+	std::cout << YELHB "Constructor copy" reset << std::endl;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
+	if (this != &rhs) {
+		const_cast<std::string &>(this->_name) = rhs.getName();
+		this->_grade = rhs.getGrade();
+	}
+	std::cout << MAGHB "Constructor assigment" reset << std::endl;
+	return *this;
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &b) {
