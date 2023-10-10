@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/09 07:31:10 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:57:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	SCF_test(void) {
 
 void	Rob(void) {
 	Bureaucrat			b1("Rust", 20);
-	Bureaucrat			b2("Gopher", 150);
+	Bureaucrat			b2("Gopher", 1);
 	AForm				*f1 = new 	RobotomyRequestForm("life");
 
 	b1.signAForm(*f1);
@@ -55,7 +55,7 @@ void	Rob(void) {
 		std::cout << e.what() << std::endl;
 	}
 
-	RobotomyRequestForm				f2("test");
+	RobotomyRequestForm				f2;
 	b2.signAForm(f2);
 	try {
 		b2.executeForm(f2);
@@ -73,7 +73,7 @@ void	Rob(void) {
 
 void	Presidential(void) {
 	Bureaucrat			b1("Rust", 80);
-	Bureaucrat			b2("Gopher", 150);
+	Bureaucrat			b2("Gopher", 2);
 	AForm				*f1 = new 	PresidentialPardonForm("life");
 
 	b1.signAForm(*f1);
@@ -83,7 +83,7 @@ void	Presidential(void) {
 		std::cout << e.what() << std::endl;
 	}
 
-	PresidentialPardonForm				f2("test");
+	PresidentialPardonForm				f2;
 	b2.signAForm(f2);
 	try {
 		b2.executeForm(f2);

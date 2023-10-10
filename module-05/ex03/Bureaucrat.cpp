@@ -6,20 +6,20 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:46:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/05 12:36:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/09 05:56:34 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("Serjinho"), _grade(150) {
-	std::cout << GRNHB "Construct Bureaucrat" << Bureaucrat::_name;
+	std::cout << GRNHB "Construct Bureaucrat " << Bureaucrat::_name;
 	std::cout << " Grade with " << Bureaucrat::_grade << reset << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string n, int g) : _name(n) {
 	Bureaucrat::_setGrade(g);
-	std::cout << GRNHB "Construct Bureaucrat" << Bureaucrat::_name;
+	std::cout << GRNHB "Construct Bureaucrat " << Bureaucrat::_name;
 	std::cout << " Grade with " << Bureaucrat::_grade << reset << std::endl;
 }
 
@@ -43,7 +43,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &b) {
-	os << HMAG << b.getName() << reset ", bureaucrat grade " HGRN << b.getGrade() << "." reset << std::endl;
+	os << HMAG << b.getName() << reset ", bureaucrat grade " HGRN << b.getGrade() << "." reset;
 	return (os);
 }
 
@@ -81,4 +81,22 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw() {
 	return (REDHB "But you don't need to scold the poor guy either." reset);
+}
+
+void	Bureaucrat::signAForm(AForm &f) {
+	if (f.getSign() == true) {
+		std::cout << *this << " couldn’t sign " << f << " because is already signed." << std::endl;
+		return ;
+	}
+	if (Bureaucrat::_grade <= f.getGradeSign()) {
+		f.beSigned(*this);
+		std::cout << *this << " signed " << f << std::endl;
+	} else {
+		std::cout << *this << " couldn’t sign " << f << " because he is noob." << std::endl; 
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form) {
+	form.execute(*this);
+	std::cout << *this << " executed " << form << std::endl;
 }

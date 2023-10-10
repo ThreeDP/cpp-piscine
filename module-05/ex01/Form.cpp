@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 00:04:09 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/05 12:54:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:05:06 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	Form::_setGradeToExec(int e) {
 
 void	Form::_setGradeToSign(int s) {
 	Form::_validRange(s);
-	const_cast<int &>(this->_grade_to_exec) = s;
+	const_cast<int &>(this->_grade_to_sign) = s;
 }
 
 std::string Form::getName(void) const {

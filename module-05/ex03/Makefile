@@ -6,15 +6,15 @@
 #    By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/09 17:38:21 by dapaulin          #+#    #+#              #
-#    Updated: 2023/10/09 20:58:20 by dapaulin         ###   ########.fr        #
+#    Updated: 2023/10/09 21:41:50 by dapaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= ex02
-HEADER			= Bureaucrat.hpp AForm.hpp define.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
+NAME			= ex03
+HEADER			= Bureaucrat.hpp AForm.hpp Intern.hpp define.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
 FLAGS			= -Wall -Wextra -Werror -std=c++98
 OBJ_PATH		= ./objs/
-SRC				= Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp main.cpp
+SRC				= Bureaucrat.cpp AForm.cpp Intern.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp main.cpp
 OBJ				= $(SRC:%.cpp=$(OBJ_PATH)%.o)
 
 all: $(NAME)
