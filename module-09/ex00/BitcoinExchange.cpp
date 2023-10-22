@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:37:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/21 19:50:18 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/22 10:22:33 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,7 @@ void	BitcoinExchange::printConversion(std::istringstream &isLine, std::string li
 				break ;
 			}
 			d.date.tm_mday--;
-			time_t timestamp = mktime(&d.date);
-		    if (timestamp == -1) {	
-        		std::cout << "Conversão falhou!" << std::endl;
-				break ;
-    		}
+			mktime(&d.date);
 		}
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
@@ -174,16 +170,16 @@ void BitcoinExchange::convertToDate(t_date &d) {
 	isD >> d.date.tm_mday;
 	isR >> d.rate;
 	if (!isY) {
-		this->_errorMsg = HRED "Error: bad input (convert) => " HYEL + d.year + HRED "-" + d.month + "-" + d.day + reset;
+		this->_errorMsg = HRED "Error: bad input => " HYEL + d.year + HRED "-" + d.month + "-" + d.day + reset;
 		throw (Except(this->_errorMsg));
 	} else if (!isM) {
-		this->_errorMsg = HRED "Error: bad input (convert) => " + d.year + "-" HYEL + d.month + HRED "-" + d.day + reset;
+		this->_errorMsg = HRED "Error: bad input => " + d.year + "-" HYEL + d.month + HRED "-" + d.day + reset;
 		throw (Except(this->_errorMsg));
 	} else if (!isD) {
-		this->_errorMsg = HRED "Error: bad input (convert) => " + d.year + "-" + d.month + "-" HYEL + d.day + reset;
+		this->_errorMsg = HRED "Error: bad input => " + d.year + "-" + d.month + "-" HYEL + d.day + reset;
 		throw (Except(this->_errorMsg));
 	} else if (!isR) {
-		this->_errorMsg = HRED "Error: bad input (convert) => " HYEL + d.strRate + reset;
+		this->_errorMsg = HRED "Error: bad input => " HYEL + d.strRate + reset;
 		throw (Except(this->_errorMsg));
 	}
 }
@@ -206,4 +202,57 @@ void BitcoinExchange::isValidDate(t_date &d) {
         this->_errorMsg = HRED "Error: bad input => " HYEL + d.year + "-" + d.month + "-" + d.day + reset;
 		throw (Except(this->_errorMsg));
     }
+}
+
+BitcoinExchange::Mydate::Mydate(void) {
+	this->tm_gmtoff = 0;
+	this->tm_hour = 0;
+	this->tm_isdst = 0;
+	this->tm_mday = 0;
+	this->tm_min = 0;
+	this->tm_mon = 0;
+	this->tm_sec = 0;
+	this->tm_wday = 0;
+	this->tm_yday = 0;
+	this->tm_year = 0;
+	this->tm_zone = 0;
+}
+
+BitcoinExchange::Mydate::~Mydate(void) {
+	
+}
+
+BitcoinExchange::Mydate::Mydate(const Mydate &date) {
+	*this = date;
+}
+
+BitcoinExchange::Mydate	&BitcoinExchange::Mydate::operator=(const Mydate &date) {
+	this->tm_year = date.tm_year;
+	this->tm_mon = date.tm_mon;
+	this->tm_mday = date.tm_mday;
+	return *this;
+}
+
+bool BitcoinExchange::Mydate::operator==(const Mydate &date) {
+	return (this->tm_mday == date.tm_mday && this->tm_mon == date.tm_mon && this->tm_year == date.tm_year);
+}
+
+bool BitcoinExchange::Mydate::operator>(Mydate const &date) const {
+	if (this->tm_year != date.tm_year) {
+		return this->tm_year > date.tm_year;
+	}
+	if (this->tm_mon != date.tm_mon) {
+		return this->tm_mon > date.tm_mon;
+	}
+	return this->tm_mday > date.tm_mday;
+}
+
+bool	BitcoinExchange::Mydate::operator<(Mydate const &date) const {
+	if (this->tm_year != date.tm_year) {
+		return this->tm_year < date.tm_year;
+	}
+	if (this->tm_mon != date.tm_mon) {
+		return this->tm_mon < date.tm_mon;
+	}
+	return this->tm_mday < date.tm_mday;
 }

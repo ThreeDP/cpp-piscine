@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:27:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/21 19:48:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/22 10:21:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,56 +34,13 @@ class BitcoinExchange
 	
 		class Mydate : public std::tm {
 			public:
-				Mydate(void){
-					this->tm_gmtoff = 0;
-					this->tm_hour = 0;
-					this->tm_isdst = 0;
-					this->tm_mday = 0;
-					this->tm_min = 0;
-					this->tm_mon = 0;
-					this->tm_sec = 0;
-					this->tm_wday = 0;
-					this->tm_yday = 0;
-					this->tm_year = 0;
-					this->tm_zone = 0;
-				}
-				Mydate(const Mydate &date) {
-					*this = date;
-				}
-				Mydate	&operator=(const Mydate &date) {
-					this->tm_year = date.tm_year;
-					this->tm_mon = date.tm_mon;
-					this->tm_mday = date.tm_mday;
-					return *this;
-				}
-				bool	operator==(const Mydate &date) const {
-					return (this->tm_mday == date.tm_mday && this->tm_mon == date.tm_mon && this->tm_year == date.tm_year);
-				}
-
-				bool	operator>(Mydate const &date) const {
-					if (this->tm_year != date.tm_year) {
-						return this->tm_year > date.tm_year;
-					}
-					if (this->tm_mon != date.tm_mon) {
-						return this->tm_mon > date.tm_mon;
-					}
-					return this->tm_mday > date.tm_mday;
-				}
-
-				bool	operator<(Mydate const &date) const {
-					if (this->tm_year != date.tm_year) {
-						return this->tm_year < date.tm_year;
-					}
-					if (this->tm_mon != date.tm_mon) {
-						return this->tm_mon < date.tm_mon;
-					}
-					return this->tm_mday < date.tm_mday;
-				}
-
-				friend std::ostream &operator<<(std::ostream &os, const Mydate &date) {
-					os << HMAG << date.tm_year << "-" << date.tm_mon << "-" << date.tm_mday << reset;
-					return os;
-				}
+				Mydate(void);
+				~Mydate(void);
+				Mydate(const Mydate &date);
+				Mydate	&operator=(const Mydate &date);
+				bool	operator==(const Mydate &date);
+				bool	operator>(Mydate const &date) const;
+				bool	operator<(Mydate const &date) const;
 		};
 
 		typedef struct s_date {
@@ -106,9 +63,7 @@ class BitcoinExchange
 			public:
 				explicit Except(const std::string& msg) : error_message(msg) {}
 				virtual ~Except() throw () {}
-				virtual const char* what() const throw () {
-					return error_message.c_str();
-				}
+				virtual const char* what() const throw () { return error_message.c_str();}
 		};
 
 		const std::string getErrorMsg(void) const;
