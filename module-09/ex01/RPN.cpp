@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 11:08:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/22 13:46:55 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:13:37 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	RPN::runOperation(char p) {
 			this->_pm.top() *= num;
 		} else if (p == '/' && size >= 2) {
 			int num = this->_pm.top();
+			if (num == 0) {
+				throw errorRPN();
+			}
 			this->_pm.pop();
 			this->_pm.top() /=	num;
 		} else if (p == '+' && size >= 2) {
@@ -63,9 +66,16 @@ void	RPN::runOperation(char p) {
 	}
 }
 
+void	RPN::isValid(char p) {
+	if (p != '*' && p != '/' && p != '-' && p != '+' && !std::isspace(p) && !std::isdigit(p)) {
+		throw errorRPN();
+	}
+}
+
 void	RPN::filter(void) {
 	for (int i = 0; this->_input[i]; i++) {
 		char	p = this->_input.at(i);
+		this->isValid(p);
 		this->addNumber(p);
 		this->runOperation(p);
 		if (!this->_input[i]) {

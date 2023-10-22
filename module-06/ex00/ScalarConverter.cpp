@@ -6,12 +6,13 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:24:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/10 12:12:31 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:27:32 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include "define.hpp"
+# include <iostream>
 
 char ScalarConverter::c = 0;
 int ScalarConverter::i = 0;
@@ -65,21 +66,21 @@ void	ScalarConverter::runConvertInt(void) {
 }
 
 void	ScalarConverter::runConvertFloat(void) {
-	if (ScalarConverter::ef || ScalarConverter::_errorHandler == __IMPOSSIBLE__)
-		std::cout << "float: " << __IMPOSSIBLE__ << std::endl;
-	else if (ScalarConverter::_errorHandler == __NAN__ \
+	if (ScalarConverter::_errorHandler == __NAN__ \
 		|| ScalarConverter::_errorHandler == __NANF__)
 		std::cout << "float: " << __NANF__ << std::endl;
+	else if (ScalarConverter::ef || ScalarConverter::_errorHandler == __IMPOSSIBLE__)
+		std::cout << "float: " << __IMPOSSIBLE__ << std::endl;
 	else
 		std::cout << "float: " << std::fixed << std::setprecision(1) << ScalarConverter::f << "f" << std::endl;
 }
 
 void	ScalarConverter::runConvertDouble(void) {
-	if (ScalarConverter::ed || ScalarConverter::_errorHandler == __IMPOSSIBLE__)
-		std::cout << "double: " << __IMPOSSIBLE__ << std::endl;
-	else if (ScalarConverter::_errorHandler == __NAN__ \
+	if (ScalarConverter::_errorHandler == __NAN__ \
 		|| ScalarConverter::_errorHandler == __NANF__)
 		std::cout << "double: " << __NAN__ << std::endl;
+	else if (ScalarConverter::ed || ScalarConverter::_errorHandler == __IMPOSSIBLE__)
+		std::cout << "double: " << __IMPOSSIBLE__ << std::endl;
 	else 
 		std::cout << "double: " << std::fixed << std::setprecision(1) << ScalarConverter::d << std::endl;
 }
@@ -94,6 +95,7 @@ void	ScalarConverter::runConvert(void) {
 void	ScalarConverter::convertChar(std::string n) {
 	std::istringstream c(n);
 
+	std::cout << std::endl << GRNHB "\tCHAR\t" reset << std::endl;
 	c >> ScalarConverter::c;
 	if (n.length() != 1) {
 		ScalarConverter::ec = true;
@@ -109,6 +111,7 @@ void	ScalarConverter::convertChar(std::string n) {
 void	ScalarConverter::convertInt(std::string n) {
 	std::istringstream	iss(n);
 
+	std::cout << std::endl << GRNHB "\tINT\t" reset << std::endl;
 	iss >> ScalarConverter::i;
 	if (!iss) {
 		ScalarConverter::_errorHandler = __IMPOSSIBLE__;
@@ -122,6 +125,7 @@ void	ScalarConverter::convertInt(std::string n) {
 void	ScalarConverter::convertFloat(std::string n) {
 	std::istringstream	iss(n);
 
+	std::cout << std::endl << GRNHB "\tFLOAT\t" reset << std::endl;
 	iss >> ScalarConverter::f;
 	if (n.length() >= 4 && n.substr(4) == __NANF__) {
 		ScalarConverter::_errorHandler = __NANF__;
@@ -141,6 +145,7 @@ void	ScalarConverter::convertFloat(std::string n) {
 void	ScalarConverter::convertDouble(std::string n) {
 	std::istringstream	iss(n);
 
+	std::cout << std::endl << GRNHB "\tDOUBLE\t" reset << std::endl;
 	iss >> ScalarConverter::d;
 	if (n.length() >= 3 && n.substr(0, 3) == __NAN__) {
 		ScalarConverter::_errorHandler = __NAN__;
@@ -152,8 +157,8 @@ void	ScalarConverter::convertDouble(std::string n) {
 		ScalarConverter::_errorHandler = __IMPOSSIBLE__;
 	}
 	(ScalarConverter::d > 127 || ScalarConverter::d < 0) ? ScalarConverter::ec = true : ScalarConverter::c = static_cast<char >(ScalarConverter::d);
-	(ScalarConverter::d > static_cast<double >(__INT_MAX__) || ScalarConverter::f < static_cast<double >(-(__INT_MAX__) - 1)) ? ScalarConverter::ei = true : ScalarConverter::i = static_cast<int >(ScalarConverter::d);
-	(ScalarConverter::d > __FLT_MAX__ || ScalarConverter::d < __FLT_MIN__) ? ScalarConverter::ef = true : ScalarConverter::f = static_cast<float >(ScalarConverter::d);
+	(ScalarConverter::d > static_cast<double >(__INT_MAX__) || ScalarConverter::d < static_cast<double >(static_cast<int >(-(__INT_MAX__) - 1))) ? ScalarConverter::ei = true : ScalarConverter::i = static_cast<int >(ScalarConverter::d);
+	(ScalarConverter::d > static_cast<double >(__FLT_MAX__) || ScalarConverter::d < static_cast<double >(-(__FLT_MAX__) -1)) ? ScalarConverter::ef = true : ScalarConverter::f = static_cast<float >(ScalarConverter::d);
 	runConvert();
 }
 
@@ -206,4 +211,5 @@ void	ScalarConverter::convert(std::string n) {
 		default:
 			break;
 	}
+	std::cout << std::endl;
 }

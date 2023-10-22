@@ -6,12 +6,12 @@
 #    By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 20:17:53 by dapaulin          #+#    #+#              #
-#    Updated: 2023/10/16 18:45:26 by dapaulin         ###   ########.fr        #
+#    Updated: 2023/10/16 20:41:26 by dapaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= mutated
-HEADER			= MutantStack.hpp define.hpp
+NAME			= btc
+HEADER			= BitcoinExchange.hpp define.hpp
 FLAGS			= -g3 -Wall -Wextra -Werror -std=c++98
 OBJ_PATH		= ./objs/
 SRC				= main.cpp

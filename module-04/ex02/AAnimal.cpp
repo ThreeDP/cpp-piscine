@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:18:35 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/09/13 21:25:32 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:44:36 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ AAnimal& AAnimal::operator=(const AAnimal &rhs) {
 	if (this != &rhs) {
 		this->_type = rhs.getType();
 	}
-	std::cout << MAGHB "[ Animal - Constructor assigment " BBLK << AAnimal::_type << BLK MAGHB " ]" reset << std::endl;
+	std::cout << MAGHB "[ AAnimal - Constructor assigment " BBLK << AAnimal::_type << BLK MAGHB " ]" reset << std::endl;
 	return *this;
 }
 

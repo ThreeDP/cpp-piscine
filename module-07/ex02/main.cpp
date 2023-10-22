@@ -5,7 +5,7 @@ int main() {
 	{
 		int *exp = new int();
 		::Array<int>	res;
-		std::cout << REDHB "[           TEST 01           ]" reset << std::endl;
+		std::cout << HRED "[           TEST 01           ]" reset << std::endl;
 		std::cout << *exp << std::endl;
 		std::cout << res[0] << std::endl;
 		delete exp;
@@ -13,31 +13,31 @@ int main() {
 	{
 		int 		size = 5;
 		::Array<int>	res(size);
-		std::cout << REDHB "[           TEST 02           ]" reset << std::endl;
-		std::cout << YELHB "[           BEFORE             ]" reset << std::endl;
+		std::cout << HRED "[           TEST 02           ]" reset << std::endl;
+		std::cout << HYEL "[           BEFORE             ]" reset << std::endl;
 		res.print();
 		for (int i = 0; i < size; i++) {
 			res[i] = i + 1;
 		}
-		std::cout << YELHB "[           AFTER             ]" reset << std::endl;
+		std::cout << HYEL "[           AFTER             ]" reset << std::endl;
 		res.print();
 	}
 	{
 		int 		size = 5;
 		::Array<float>	res(size);
-		std::cout << REDHB "[           TEST 03           ]" reset << std::endl;
-		std::cout << YELHB "[           BEFORE             ]" reset << std::endl;
+		std::cout << HRED "[           TEST 03           ]" reset << std::endl;
+		std::cout << HYEL "[           BEFORE             ]" reset << std::endl;
 		res.print();
 		for (float i = 0; i < size; i++) {
 			res[i] = i + 0.5;
 		}
-		std::cout << YELHB "[           AFTER             ]" reset << std::endl;
+		std::cout << HYEL "[           AFTER             ]" reset << std::endl;
 		res.print();
 	}
 	{
 		int 		size = 5;
 		::Array<float>	res(size);
-		std::cout << REDHB "[           Out-of-range           ]" reset << std::endl;
+		std::cout << HRED "[           Out-of-range           ]" reset << std::endl;
 		try {
 			res[-2];
 		} catch (const std::exception &e) {

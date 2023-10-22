@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:53:54 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/12 19:56:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:27:23 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ unsigned int Array<T>::size(void) const {
 
 template <typename T>
 const char *Array<T>::outOfRange::what(void) const throw() {
-	return (REDHB "Array out of range." reset);
+	return (HRED "Array out of range." reset);
 }
 
 template <typename T>
@@ -112,7 +112,7 @@ T	&Array<T>::operator[](unsigned int i) {
 
 template<typename T>
 void	Array<T>::print(void) {
-	std::cout << GRNHB "[ ";
+	std::cout << HGRN "[ ";
 	for (unsigned int i = 0; i < _size; i++) {
 		if (i == _size - 1) {
 			std::cout << this->_array[i] << " ]" reset << std::endl; 
