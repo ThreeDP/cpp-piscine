@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 10:33:17 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/22 14:12:26 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:15:14 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __RPN_HPP__
 
 # include "define.hpp"
+# include <sstream>
 # include <iostream>
 # include <iomanip>
 # include <algorithm>
@@ -22,7 +23,7 @@
 class RPN {
 	std::string		_input;
 	std::stack<int> _pm;
-	RPN(void);
+	RPN(void){};
 	void				addNumber(char p);
 	void				runOperation(char p);
 	void				isValid(char p);

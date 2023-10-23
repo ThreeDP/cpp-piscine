@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:27:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/10/22 10:21:27 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:52:14 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "define.hpp"
 # include <map>
 # include <iterator>
-# include <vector>
 # include <fstream>
 # include <iostream>
 # include <iomanip>
